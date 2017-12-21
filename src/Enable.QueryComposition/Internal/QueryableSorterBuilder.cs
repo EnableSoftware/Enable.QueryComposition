@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -10,7 +10,7 @@ namespace Enable.QueryComposition.Internal
 
         public QueryableSorterBuilder<T> OrderByAscending<TKey>(Expression<Func<T, TKey>> keySelector)
         {
-            if (_currentSorter == null)
+            if (_currentSorter != null)
             {
                 _currentSorter = new ThenByQueryableSorter<T, TKey>(_currentSorter, keySelector, SortDirection.Ascending);
             }
@@ -30,7 +30,7 @@ namespace Enable.QueryComposition.Internal
 
         public QueryableSorterBuilder<T> OrderByDescending<TKey>(Expression<Func<T, TKey>> keySelector)
         {
-            if (_currentSorter == null)
+            if (_currentSorter != null)
             {
                 _currentSorter = new ThenByQueryableSorter<T, TKey>(_currentSorter, keySelector, SortDirection.Descending);
             }
